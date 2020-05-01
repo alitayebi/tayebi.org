@@ -20,13 +20,13 @@
         bottom: 0;
         width: 100%;
     }
-    #slider{ position: absolute; top: 10px; right: 10px; z-index: 5; }
+    #slider{ position: absolute; top: 10px; right: 10px; z-index: 999; }
     </style>
 </head>
 
 <body>
     <div id='map'></div>
-    <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="layer.setOpacity(this.value)">
+    <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="naseriLayer.setOpacity(this.value)">
     <script>
     var southWest = L.latLng(35.660157, 51.396178);
     var northEast = L.latLng(35.701953, 51.448063);
@@ -39,7 +39,8 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
     });
     var naseriLayer = L.tileLayer('/maps/naseri/tiles/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors',
+        opacity: 1.0
     }).addTo(map);
     var bingLayer = L.tileLayer.bing(BING_KEY);
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
