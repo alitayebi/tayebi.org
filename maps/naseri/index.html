@@ -31,9 +31,8 @@
     var northEast = L.latLng(35.705891, 51.452440);
     var map = L.map('map', {
       maxBounds: L.latLngBounds(southWest, northEast),
-      maxZoom: 18,
-      minZoom: 12
     }).setView([35.679492, 51.422418], 17);
+    map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
     var BING_KEY = 'AkwDTcH4epAKXHmlozwuWwEJ1DJ6xWDYNvENvudEPdWqv0vL7YutwurTTpTn8306 '
     var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
