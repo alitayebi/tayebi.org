@@ -37,7 +37,7 @@
     }).addTo(map);
     var bingLayer = L.tileLayer.bing(BING_KEY);
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
-    var mapLayer2 = L.layerGroup([osmLayer, osmLayer]).addTo(map);
+    var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
     var mapLayers = {
     "Stamen Maps" : mapLayer1,
     "Other Maps" : mapLayer2
@@ -45,7 +45,7 @@
 
     L.control.layers(mapLayers,null,{collapsed:false, position: 'topright'}).addTo(map);
 
-    L.control.sideBySide([bingLayer, naseriLayer],[osmLayer, osmLayer]).addTo(map);
+    L.control.sideBySide([bingLayer, naseriLayer],[osmLayer, naseriLayer]).addTo(map);
     </script>
 </body>
 </html>
