@@ -46,8 +46,8 @@
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
     var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
     var mapLayers = {
-    "عکس هوایی" : bingLayer,
-    "نقشه" : osmLayer
+    "عکس هوایی" : mapLayer1,
+    "نقشه" : mapLayer2
     };
 
     L.control.layers(mapLayers,null,{collapsed:false, position: 'bottomleft'}).addTo(map);
