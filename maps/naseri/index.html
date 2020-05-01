@@ -35,19 +35,19 @@
     }).setView([35.679492, 51.422418], 17);
     map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
     var BING_KEY = 'AkwDTcH4epAKXHmlozwuWwEJ1DJ6xWDYNvENvudEPdWqv0vL7YutwurTTpTn8306 '
-    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
-    });
     var naseriLayer = L.tileLayer('/maps/naseri/tiles/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors',
         opacity: 1.0
+    }).addTo(map);
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
     }).addTo(map);
     var bingLayer = L.tileLayer.bing(BING_KEY);
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
     var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
     var mapLayers = {
-    "عکس هوایی" : mapLayer1,
-    "نقشه" : mapLayer2
+    "عکس هوایی" : bingLayer,
+    "نقشه" : osmLayer
     };
 
     L.control.layers(mapLayers,null,{collapsed:false, position: 'bottomleft'}).addTo(map);
