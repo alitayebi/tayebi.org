@@ -40,8 +40,9 @@
     		"Aerial": bingLayer,
     		"OSM": osmLayer
     	};
+      L.control.sideBySide(baseLayers, osmLayer).addTo(map);
+      
 	L.control.layers(baseLayers).addTo(map);
-    L.control.sideBySide(baseLayers, osmLayer).addTo(map);
     </script>
 </body>
 </html>
