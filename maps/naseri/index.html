@@ -44,11 +44,11 @@
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
     var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
     var mapLayers = {
-    "Stamen Maps" : mapLayer1,
-    "Other Maps" : mapLayer2
+    "عکس هوایی" : mapLayer1,
+    "نقشه" : mapLayer2
     };
 
-    L.control.layers(mapLayers,null,{collapsed:false, position: 'topright'}).addTo(map);
+    L.control.layers(mapLayers,null,{collapsed:false, position: 'bottomleft'}).addTo(map);
 
     L.control.sideBySide([bingLayer, osmLayer],[naseriLayer, naseriLayer]).addTo(map);
     </script>
