@@ -10,9 +10,7 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
     <script src="/assets/js/leaflet-bing-layer.js"></script>
     <script src="/assets/js/leaflet-side-by-side.js"></script>
-    <script src="/assets/js/L.Control.Layers.Minimap.js"></script>
     <link href='http://cdn.leafletjs.com/leaflet/v1.3.1/leaflet.css' rel='stylesheet' />
-    <link rel="stylesheet" href="/assets/css/control.layers.minimap.css" />
     <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 
@@ -30,22 +28,25 @@
       maxBounds: L.latLngBounds(southWest, northEast),
     }).setView([35.679492, 51.422418], 17);
     map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
-    var BING_KEY = 'AkwDTcH4epAKXHmlozwuWwEJ1DJ6xWDYNvENvudEPdWqv0vL7YutwurTTpTn8306 ';
-    var baselayers = {
-      'osmLayer': L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png'),
-      'Bing': L.tileLayer.bing(BING_KEY)
-  };
-
-    L.control.layers.minimap(baselayers, {}, {
-        collapsed: false
+    var BING_KEY = 'AkwDTcH4epAKXHmlozwuWwEJ1DJ6xWDYNvENvudEPdWqv0vL7YutwurTTpTn8306 '
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
     }).addTo(map);
-    baselayers['osmLayer'].addTo(map);
     var naseriLayer = L.tileLayer('/maps/naseri/tiles/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors',
         opacity: 1.0
     }).addTo(map);
+    var bingLayer = L.tileLayer.bing(BING_KEY);
+    var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
+    var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
+    var mapLayers = {
+    "عکس هوایی" : mapLayer1,
+    "نقشه" : mapLayer2
+    };
 
-    L.control.sideBySide(null,naseriLayer).addTo(map);
+    L.control.layers(mapLayers,null,{collapsed:false, position: 'bottomleft'}).addTo(map);
+
+    L.control.sideBySide([null, null],[naseriLayer, naseriLayer]).addTo(map);
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
