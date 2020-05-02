@@ -16,7 +16,10 @@
 
 <body>
     <div id='map'></div>
-    <i class="fas fa-dollar-sign" aria-hidden="true"></i><input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="naseriLayer.setOpacity(this.value)">
+    <div id="slider">
+      <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+      <input type="range" min="0" max="1" step="0.1" value="1" oninput="naseriLayer.setOpacity(this.value)">
+    </div>
     <script>
     var southWest = L.latLng(35.660157, 51.396178);
     var northEast = L.latLng(35.701953, 51.448063);
