@@ -29,6 +29,7 @@
       maxBounds: L.latLngBounds(southWest, northEast),
     }).setView([35.679492, 51.422418], 17);
     map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
+    var minimap = L.map('minimap');
     var BING_KEY = 'AkwDTcH4epAKXHmlozwuWwEJ1DJ6xWDYNvENvudEPdWqv0vL7YutwurTTpTn8306';
     var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://twitter.com/alitayebi">Ali Tayebi<\/a>'
@@ -37,7 +38,8 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a>',
         opacity: 1.0
     }).addTo(map);
-    var bingLayer = L.tileLayer.bing(BING_KEY);
+    var bingLayer = L.tileLayer.bing(BING_KEY).addTo(minimap);
+
     var mapLayer1 = L.layerGroup([bingLayer, naseriLayer]);
     var mapLayer2 = L.layerGroup([osmLayer, naseriLayer]).addTo(map);
     var mapLayers = {
