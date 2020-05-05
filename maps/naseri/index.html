@@ -29,14 +29,14 @@
       <i class="fas fa-circle"></i>
     </div>
     <script>
-    var southWest = L.latLng(35.660157, 51.396178);
-    var northEast = L.latLng(35.701953, 51.448063);
+//    var southWest = L.latLng(35.660157, 51.396178);
+//    var northEast = L.latLng(35.701953, 51.448063);
     var bigmap = 'osmLayer';
     var minimap = 'bing'
     var map = L.map('map', {
-      maxBounds: L.latLngBounds(southWest, northEast),
+//      maxBounds: L.latLngBounds(southWest, northEast),
     }).setView([35.679492, 51.422418], 17);
-    map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
+//    map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
     var minimap = L.map('minimap', {
       attributionControl: false,
       zoomControl: false
